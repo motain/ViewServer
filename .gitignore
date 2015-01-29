@@ -33,3 +33,6 @@ proguard/
 
 # Misc
 .DS_Store
+
+# sensitive files not to be committed at any point
+onefootball.properties.gradle

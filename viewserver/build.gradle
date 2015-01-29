@@ -1,10 +1,27 @@
 apply plugin: 'com.android.library'
+apply plugin: 'maven'
 
 android {
     compileSdkVersion 21
-    buildToolsVersion "21.1.1"
+    buildToolsVersion "21.1.2"
 }
 
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
+}
+
+uploadArchives {
+    repositories {
+        mavenDeployer {
+            repository(url: project.deploymentUrl) {
+               authentication(userName: project.deploymentUsername, password: project.deploymentPassword)
+            }
+            
+            pom.project {
+            	groupId 'com.onefootball.android'
+            	artifactId 'viewserver'
+            	version '1.1'
+        	}
+        }
+    }
 }
